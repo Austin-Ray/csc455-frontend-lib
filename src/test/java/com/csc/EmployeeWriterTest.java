@@ -1,7 +1,6 @@
 package com.csc;
 
 import com.csc.model.Employee;
-import csc455.BuildConfig;
 import org.junit.Before;
 import org.junit.Test;
 

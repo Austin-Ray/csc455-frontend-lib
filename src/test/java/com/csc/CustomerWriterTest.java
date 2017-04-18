@@ -1,7 +1,6 @@
 package com.csc;
 
 import com.csc.model.Customer;
-import csc455.BuildConfig;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

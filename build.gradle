@@ -16,22 +16,3 @@ dependencies {
 
 }
 
-buildscript {
-    repositories {
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
-    }
-    dependencies {
-        classpath 'gradle.plugin.de.fuerstenau:BuildConfigPlugin:1.1.8'
-    }
-}
-apply plugin: 'de.fuerstenau.buildconfig' // actually applies the plugin
-
-buildConfig {
-    clsName "BuildConfig"
-    //buildConfigField("String", "MY_SQL_URL", mysqlUrl)
-    //buildConfigField("String", "MY_SQL_USER", mysqlUserName)
-    //buildConfigField("String", "MY_SQL_PS", mysqlPassword)
-    //buildConfigField("String", "MY_SQL_DB", mysqlTable)
-}

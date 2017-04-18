@@ -1,6 +1,5 @@
 package com.csc;
 
-import csc455.BuildConfig;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
