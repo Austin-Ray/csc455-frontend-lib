@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SqlDatabaseTest {
-  @Test
+  /*@Test
   public void getConnection() throws Exception {
     try {
       SqlDatabase db = new SqlDatabase(BuildConfig.MY_SQL_URL, BuildConfig.MY_SQL_DB,
@@ -16,5 +16,5 @@ public class SqlDatabaseTest {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
+  }*/
 }
