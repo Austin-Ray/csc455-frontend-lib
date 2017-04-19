@@ -20,7 +20,7 @@ public class TransportWriter extends SqlInteractor {
     super(db);
   }
 
-  private Vehicle getVehicleById(int vid) throws SQLException {
+  public Vehicle getVehicleById(int vid) throws SQLException {
     Object[] parameters = { vid };
     CallableStatement statement = super.executeReadStatement(selectById, parameters);
 
@@ -39,7 +39,7 @@ public class TransportWriter extends SqlInteractor {
     return null;
   }
 
-  private List<Vehicle> getAllVehicles() throws SQLException {
+  public List<Vehicle> getAllVehicles() throws SQLException {
     List<Vehicle> vehicles = new ArrayList<>();
     CallableStatement statement = super.executeReadStatement(selectAllTransport, new Object[]{});
 
