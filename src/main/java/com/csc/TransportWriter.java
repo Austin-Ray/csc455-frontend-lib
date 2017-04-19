@@ -14,7 +14,7 @@ public class TransportWriter extends SqlInteractor {
   private final String selectAllTransport = "TransportSelectAll()";
   private final String updateMilage = "TransportUpdateMileage(?, ?)";
   private final String selectById = "TransportSelectByVehicleID(?)";
-  private final String insert = "TransportInsert(?,?,?)";
+  private final String insert = "TransportInsert(?,?)";
 
   public TransportWriter(SqlDatabase db) {
     super(db);
