@@ -84,4 +84,8 @@ public class CustomerWriter extends UserWriter {
 
     super.executeWriteStatement(insertCustomer, parameters);
   }
+
+  public void updateCustomer(Customer c) {
+
+  }
 }

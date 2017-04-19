@@ -1,10 +1,7 @@
 package com.csc;
 
 import javax.xml.transform.Result;
-import java.sql.CallableStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 
 public class SqlInteractor {
   protected SqlDatabase db;
@@ -54,10 +51,13 @@ public class SqlInteractor {
     CallableStatement statement = db.getConnection().prepareCall(formatCall(call));
     statement = insertParameters(statement, parameters);
     statement.execute();
+    statement.close();
+    Statement stat = db.getConnection().createStatement();
+    stat.execute("SELECT OrderID from Orders");
 
     int aik = -1;
 
-    ResultSet rs = statement.getGeneratedKeys();
+    ResultSet rs = stat.getResultSet();
 
     while (rs.next()) {
       aik = rs.getInt(1);
