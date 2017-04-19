@@ -54,23 +54,23 @@ public class OrderWriter extends SqlInteractor {
     return processResults(super.executeReadStatement(orderByStatus, parameters));
   }
 
-  private List<Order> allOrdersByCustomer(int cid) throws SQLException {
+  public List<Order> allOrdersByCustomer(int cid) throws SQLException {
     Object[] parameters = { cid };
     CallableStatement statement = super.executeReadStatement(customerOrder, parameters);
     return processResults(statement);
   }
 
-  private void updateOrder(int eid, int oid) throws SQLException {
+  public void updateOrder(int eid, int oid) throws SQLException {
     Object[] parameters = { eid, oid };
     super.executeWriteStatement(orderUpdateEid, parameters);
   }
 
-  private void updateOrderShipDate(int oid, Date date) throws SQLException {
+  public void updateOrderShipDate(int oid, Date date) throws SQLException {
     Object[] parameters = { date, oid };
     super.executeWriteStatement(orderUpdateShipDate, parameters);
   }
 
-  private void setOrderUpdateStatus(int oid, String status) throws SQLException {
+  public void setOrderUpdateStatus(int oid, String status) throws SQLException {
     Object[] parameters = { status, oid };
     super.executeWriteStatement(orderUpdateStatus, parameters);
   }
