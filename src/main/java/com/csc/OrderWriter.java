@@ -94,7 +94,6 @@ public class OrderWriter extends SqlInteractor {
     while (hasResults) {
       ResultSet rs = statement.getResultSet();
 
-
       while (rs.next()) {
         int pid = rs.getInt("ParcelID");
         float weight = rs.getFloat("Weight");

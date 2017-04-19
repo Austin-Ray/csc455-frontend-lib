@@ -27,6 +27,8 @@ public class SqlInteractor {
         statement.setFloat(pos, (Float) parameters[i]);
       } else if (parameters[i] == null) {
         statement.setNull(pos, Types.NULL);
+      } else if (parameters[i] instanceof Date) {
+        statement.setDate(pos, (Date)parameters[i]);
       }
     }
 
