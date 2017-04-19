@@ -81,7 +81,7 @@ public class OrderWriter extends SqlInteractor {
     super.executeWriteStatement(orderUpdateStatus, parameters);
   }
 
-  private void insertOrder(int cid, int eid, int oZip, int aZip, int dZip) throws SQLException {
+  public void insertOrder(int cid, int eid, int oZip, int aZip, int dZip) throws SQLException {
     Object[] parameters = { cid, eid, oZip, aZip, dZip };
     super.executeWriteStatement(orderInsert, parameters);
   }
