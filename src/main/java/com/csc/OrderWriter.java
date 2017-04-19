@@ -12,7 +12,7 @@ import java.util.List;
 public class OrderWriter extends SqlInteractor {
 
   private final String orderByEmp = "OrderSelectAllHandledByEmployee(?)";
-  private final String orderInsert = "OrderInsert(?,?,?,?)";
+  private final String orderInsert = "OrderInsert(?,?,?,?,?)";
   private final String orderByDesto = "OrderSelectByDestination(?)";
   private final String orderByStatus = "OrderSelectByStatus(?)";
   private final String ordersByDatePlaced = "OrdersSelectByDatePlaced(?)";
