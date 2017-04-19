@@ -2,10 +2,7 @@ package com.csc;
 
 import com.csc.model.Order;
 
-import java.sql.CallableStatement;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +59,30 @@ public class OrderWriter extends SqlInteractor {
   }
 
   public List<Order> allOrders() throws SQLException {
-    CallableStatement statement = super.executeReadStatement("SELECT * FROM Orders;", new Object[]{});
-    return processResults(statement);
+    Statement statement = db.getConnection().createStatement();
+    List<Order> orders = new ArrayList<>();
+    boolean hasResults = statement.execute("SELECT * FROM Orders");
+
+    while (hasResults) {
+      ResultSet rs = statement.getResultSet();
+
+      while (rs.next()) {
+        int oid = rs.getInt("OrderID");
+        int cid = rs.getInt("CustomerID");
+        int eid = rs.getInt("EmployeeID");
+        int oZip = rs.getInt("OriginZip");
+        int aZip = rs.getInt("ActualZip");
+        int dZip = rs.getInt("DestinationZip");
+        String status = rs.getString("Status");
+        Date rDate = rs.getDate("Received_Date");
+        Date sDate = rs.getDate("Shipped_Date");
+
+        orders.add(new Order(oid, cid, eid, oZip, aZip, dZip, status, rDate, sDate));
+      }
+
+      hasResults = statement.getMoreResults();
+    }
+    return orders;
   }
 
   public void parcelInsert(float weight, String size, float price, int quantity) throws SQLException {
