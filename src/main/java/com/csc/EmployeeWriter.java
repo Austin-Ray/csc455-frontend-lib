@@ -44,7 +44,7 @@ public class EmployeeWriter extends UserWriter {
         String email = rs.getString("Email");
         String password = rs.getString("password");
 
-        list.add(new Employee(firstName, lastName, email, password, uid, roleId, vehicleType));
+        list.add(new Employee(firstName, lastName, email, password, uid, roleId, vehicleType,eid));
       }
     }
 
