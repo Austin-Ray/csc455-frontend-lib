@@ -1,6 +1,7 @@
 package com.csc;
 
 import com.csc.model.Order;
+import com.csc.model.Parcel;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -78,6 +79,29 @@ public class OrderWriter extends SqlInteractor {
         Date sDate = rs.getDate("Shipped_Date");
 
         orders.add(new Order(oid, cid, eid, oZip, aZip, dZip, status, rDate, sDate));
+      }
+
+      hasResults = statement.getMoreResults();
+    }
+    return orders;
+  }
+
+  public List<Parcel> allParcels() throws SQLException {
+    Statement statement = db.getConnection().createStatement();
+    List<Parcel> orders = new ArrayList<>();
+    boolean hasResults = statement.execute("SELECT * FROM Parcels");
+
+    while (hasResults) {
+      ResultSet rs = statement.getResultSet();
+
+
+      while (rs.next()) {
+        int pid = rs.getInt("ParcelID");
+        float weight = rs.getFloat("Weight");
+        String size = rs.getString("Size");
+        float price = rs.getFloat("Price");
+        int oid = rs.getInt("OrderID");
+        orders.add(new Parcel(pid, weight, size, price, 1, oid));
       }
 
       hasResults = statement.getMoreResults();
