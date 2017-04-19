@@ -21,6 +21,7 @@ public class OrderWriter extends SqlInteractor {
   private final String orderUpdateShipDate = "OrderUpdateShipDate(?,?)";
   private final String orderUpdateStatus = "OrderUpdateStatus(?, ?)";
   private final String customerOrder = "CustomerOrderHistory(?)";
+  private final String parcelInsert = "ParcelInsert(?, ?, ?, ?, ?);"
 
   public OrderWriter(SqlDatabase db) {
     super(db);
@@ -58,6 +59,11 @@ public class OrderWriter extends SqlInteractor {
     Object[] parameters = { cid };
     CallableStatement statement = super.executeReadStatement(customerOrder, parameters);
     return processResults(statement);
+  }
+
+  public void parcelInsert(float weight, String size, float price, int quantity, int oid) throws SQLException {
+    Object[] parameters = { weight, size, price, quantity, oid };
+    super.executeWriteStatement(parcelInsert, parameters);
   }
 
   public void updateOrder(int eid, int oid) throws SQLException {
