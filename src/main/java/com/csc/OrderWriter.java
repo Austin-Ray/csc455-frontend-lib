@@ -20,6 +20,7 @@ public class OrderWriter extends SqlInteractor {
   private final String orderUpdateEid = "OrderUpdateEmployeeID(?,?)";
   private final String orderUpdateShipDate = "OrderUpdateShipDate(?,?)";
   private final String orderUpdateStatus = "OrderUpdateStatus(?, ?)";
+  private final String customerOrder = "CustomerOrderHistory(?)";
 
   public OrderWriter(SqlDatabase db) {
     super(db);
@@ -51,6 +52,12 @@ public class OrderWriter extends SqlInteractor {
   private List<Order> allOrdersByDate(String call, Date date) throws SQLException {
     Object[] parameters = { date };
     return processResults(super.executeReadStatement(orderByStatus, parameters));
+  }
+
+  private List<Order> allOrdersByCustomer(int cid) throws SQLException {
+    Object[] parameters = { cid };
+    CallableStatement statement = super.executeReadStatement(customerOrder, parameters);
+    return processResults(statement);
   }
 
   private void updateOrder(int eid, int oid) throws SQLException {
