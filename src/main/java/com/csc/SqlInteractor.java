@@ -2,6 +2,7 @@ package com.csc;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 public class SqlInteractor {
   protected SqlDatabase db;
@@ -22,6 +23,8 @@ public class SqlInteractor {
         statement.setInt(pos, (Integer) parameters[i]);
       } else if (parameters[i] instanceof Float) {
         statement.setFloat(pos, (Float) parameters[i]);
+      } else if (parameters[i] == null) {
+        statement.setNull(i, Types.INTEGER);
       }
     }
 

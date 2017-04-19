@@ -86,6 +86,11 @@ public class OrderWriter extends SqlInteractor {
     super.executeWriteStatement(orderInsert, parameters);
   }
 
+  public void insertOrder(int cid, int oZip, int dZip) throws SQLException {
+    Object[] parameters = { cid, null, oZip, null, dZip };
+    super.executeWriteStatement(orderInsert, parameters);
+  }
+
   private List<Order> processResults(CallableStatement statement) throws SQLException {
     List<Order> orders = new ArrayList<>();
     boolean hasResults = statement.execute();
