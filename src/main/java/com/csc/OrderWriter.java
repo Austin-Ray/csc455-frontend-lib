@@ -61,6 +61,11 @@ public class OrderWriter extends SqlInteractor {
     return processResults(statement);
   }
 
+  public List<Order> allOrders() throws SQLException {
+    CallableStatement statement = super.executeReadStatement("SELECT * FROM Orders;", new Object[]{});
+    return processResults(statement);
+  }
+
   public void parcelInsert(float weight, String size, float price, int quantity) throws SQLException {
     Object[] parameters = { weight, size, price, quantity };
     super.executeWriteStatement(parcelInsert, parameters);
