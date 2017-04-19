@@ -89,7 +89,7 @@ public class OrderWriter extends SqlInteractor {
   public List<Parcel> allParcels() throws SQLException {
     Statement statement = db.getConnection().createStatement();
     List<Parcel> orders = new ArrayList<>();
-    boolean hasResults = statement.execute("SELECT * FROM Parcels");
+    boolean hasResults = statement.execute("SELECT * FROM Parcel");
 
     while (hasResults) {
       ResultSet rs = statement.getResultSet();
