@@ -1,6 +1,8 @@
 package com.csc;
 
+import javax.xml.transform.Result;
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -43,6 +45,22 @@ public class SqlInteractor {
     statement = insertParameters(statement, parameters);
     statement.execute();
     statement.close();
+  }
+
+  public int executeWriteStatementWithReturn(String call, Object[] parameters) throws SQLException {
+    CallableStatement statement = db.getConnection().prepareCall(call);
+    statement = insertParameters(statement, parameters);
+    statement.execute();
+
+    int aik = -1;
+
+    ResultSet rs = statement.getGeneratedKeys();
+
+    while (rs.next()) {
+      aik = rs.getInt(1);
+    }
+
+    return aik;
   }
 
   private String formatCall(String call) {
