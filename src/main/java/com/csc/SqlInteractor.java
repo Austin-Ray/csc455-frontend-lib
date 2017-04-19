@@ -26,7 +26,7 @@ public class SqlInteractor {
       } else if (parameters[i] instanceof Float) {
         statement.setFloat(pos, (Float) parameters[i]);
       } else if (parameters[i] == null) {
-        statement.setNull(i, Types.INTEGER);
+        statement.setNull(pos, Types.INTEGER);
       }
     }
 
