@@ -55,6 +55,8 @@ public class TransportWriter extends SqlInteractor {
 
         vehicles.add(new Vehicle(vid, vType, mileage));
       }
+
+      hasResults = statement.getMoreResults();
     }
 
     return vehicles;
