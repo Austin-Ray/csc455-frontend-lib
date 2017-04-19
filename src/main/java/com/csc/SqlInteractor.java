@@ -19,7 +19,10 @@ public class SqlInteractor {
     for (int i = 0; i < parameters.length; i++) {
       int pos = i + 1;
 
-      if (parameters[i] instanceof String) {
+      if (parameters[i] == null) {
+        statement.setNull(pos, Types.INTEGER);
+      }
+      else if (parameters[i] instanceof String) {
         statement.setString(pos, (String) parameters[i]);
       } else if (parameters[i] instanceof Integer) {
         statement.setInt(pos, (Integer) parameters[i]);
