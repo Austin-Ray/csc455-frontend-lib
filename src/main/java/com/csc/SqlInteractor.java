@@ -51,7 +51,7 @@ public class SqlInteractor {
   }
 
   public int executeWriteStatementWithReturn(String call, Object[] parameters) throws SQLException {
-    CallableStatement statement = db.getConnection().prepareCall(call);
+    CallableStatement statement = db.getConnection().prepareCall(formatCall(call));
     statement = insertParameters(statement, parameters);
     statement.execute();
 
@@ -62,6 +62,8 @@ public class SqlInteractor {
     while (rs.next()) {
       aik = rs.getInt(1);
     }
+
+    statement.close();
 
     return aik;
   }
