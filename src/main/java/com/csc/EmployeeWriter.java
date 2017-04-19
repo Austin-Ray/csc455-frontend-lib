@@ -18,8 +18,8 @@ public class EmployeeWriter extends UserWriter {
 
   public void insertEmployee(Employee employee) throws SQLException {
 
-    Object[] parameters = { employee.getLastName(), employee.getFirstName(), employee.getEmail(), employee.getPassword(),
-                            employee.getRoleid(), employee.getVehicleType() };
+    Object[] parameters = { employee.getLastName(), employee.getFirstName(), employee.getEmail(),
+        employee.getPassword(), employee.getRoleid(), employee.getVehicleType() };
 
     executeWriteStatement(employeeInsert, parameters);
   }

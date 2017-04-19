@@ -4,6 +4,7 @@ package com.csc;
 import com.csc.model.Vehicle;
 
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -63,8 +64,15 @@ public class TransportWriter extends SqlInteractor {
   }
 
   public void insertVehicle(Vehicle vec) throws SQLException {
-    Object[] parameters = { vec.getType(), vec.getMileage() };
-    super.executeWriteStatement(insert, parameters);
+//    Object[] parameters = { vec.getType(), vec.getMileage() };
+
+    String query = "INSERT INTO Transport (?, ?)";
+    PreparedStatement statement = db.getConnection().prepareStatement(query);
+    statement.setString(1, vec.getType());
+    statement.setInt(2, vec.getMileage());
+    statement.execute();
+    statement.close();
+//    super.executeWriteStatement(insert, parameters);
   }
 
   public void updateMilage(int vid, int mileage) throws SQLException {
