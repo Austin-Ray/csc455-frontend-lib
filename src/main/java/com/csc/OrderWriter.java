@@ -21,7 +21,7 @@ public class OrderWriter extends SqlInteractor {
   private final String orderUpdateShipDate = "OrderUpdateShipDate(?,?)";
   private final String orderUpdateStatus = "OrderUpdateStatus(?, ?)";
   private final String customerOrder = "CustomerOrderHistory(?)";
-  private final String parcelInsert = "ParcelInsert(?, ?, ?, ?, ?);";
+  private final String parcelInsert = "ParcelInsert(?, ?, ?, ?, ?)";
 
   public OrderWriter(SqlDatabase db) {
     super(db);
