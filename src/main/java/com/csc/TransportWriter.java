@@ -64,15 +64,9 @@ public class TransportWriter extends SqlInteractor {
   }
 
   public void insertVehicle(Vehicle vec) throws SQLException {
-//    Object[] parameters = { vec.getType(), vec.getMileage() };
+    Object[] parameters = { vec.getType(), vec.getMileage() };
 
-    String query = "INSERT INTO Transport (VehicleType, Mileage) values (?, ?)";
-    PreparedStatement statement = db.getConnection().prepareStatement(query);
-    statement.setString(1, vec.getType());
-    statement.setInt(2, vec.getMileage());
-    statement.execute();
-    statement.close();
-//    super.executeWriteStatement(insert, parameters);
+    super.executeWriteStatement(insert, parameters);
   }
 
   public void updateMilage(int vid, int mileage) throws SQLException {
