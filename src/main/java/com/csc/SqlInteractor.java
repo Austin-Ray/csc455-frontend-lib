@@ -20,7 +20,7 @@ public class SqlInteractor {
       int pos = i + 1;
 
       if (parameters[i] == null) {
-        statement.setNull(pos, Types.INTEGER);
+        statement.setNull(pos, Types.NULL);
       }
       else if (parameters[i] instanceof String) {
         statement.setString(pos, (String) parameters[i]);
@@ -29,7 +29,7 @@ public class SqlInteractor {
       } else if (parameters[i] instanceof Float) {
         statement.setFloat(pos, (Float) parameters[i]);
       } else if (parameters[i] == null) {
-        statement.setNull(pos, Types.INTEGER);
+        statement.setNull(pos, Types.NULL);
       }
     }
 
